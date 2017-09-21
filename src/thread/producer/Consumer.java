@@ -20,7 +20,6 @@ public class Consumer implements Runnable {
     public void run() {
         for (int i = 1; i <= 10; i++) {
             Bread bread = basket.pop(id);
-
             try {
                 Thread.sleep(1);
             } catch (InterruptedException e) {

@@ -14,7 +14,7 @@ public class Test {
         Producer producer2 = new Producer(2, basket);
         Consumer consumer1 = new Consumer(1, basket);
         Consumer consumer2 = new Consumer(2, basket);
-        new Thread(producer1).start();
+//        new Thread(producer1).start();
         new Thread(producer2).start();
         new Thread(consumer1).start();
         new Thread(consumer2).start();

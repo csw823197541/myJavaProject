@@ -15,8 +15,6 @@ public class Basket {
 
     private List<Bread> breadList = new ArrayList<>();
 
-    
-
     /**
      * 此方法用于往篮子里扔面包,
      * 每当厨师生成好一个面包就往篮子里边扔,

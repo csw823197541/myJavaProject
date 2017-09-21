@@ -1,7 +1,5 @@
 package thread;
 
-import sun.java2d.loops.GraphicsPrimitive;
-
 /**
  * Created by csw on 2016/11/21 11:31.
  * Explain:

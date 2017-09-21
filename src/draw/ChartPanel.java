@@ -17,7 +17,7 @@ public class ChartPanel extends JPanel {
     private int block = 500;
 
     private int timeStep = 2;
-    private int n = 10;
+    private int n = 6;
 
     private int gap = 5;
 
@@ -30,6 +30,7 @@ public class ChartPanel extends JPanel {
         this.setSize(GlobalData.width, GlobalData.height);
         this.setOpaque(true);
         this.setLayout(null);
+        this.setBackground(Color.WHITE);
     }
 
     @Override
@@ -42,13 +43,13 @@ public class ChartPanel extends JPanel {
 
         //y轴
         g2d.setPaint(Color.BLACK);
-        g2d.setStroke(new BasicStroke(2));
+        g2d.setStroke(new BasicStroke(4));
         g2d.drawLine(leftMargin, topMargin, leftMargin, height);
         g2d.drawString("时间:", leftMargin - 50, topMargin);
         int b = block / n;
         int allTime = timeStep * n;
         for (int j = 0; j <= n; j++) {
-            String tStr = String.valueOf(j * timeStep);
+            String tStr = String.valueOf(j * timeStep + 8);
             int timeY = height - j * b;
             g2d.drawString(tStr, leftMargin - 50, timeY);
             g2d.drawLine(leftMargin - gap, timeY, leftMargin, timeY);
@@ -61,7 +62,7 @@ public class ChartPanel extends JPanel {
         for (int i = 0; i < GlobalData.str.length; i++) {
             String xStr = GlobalData.str[i];
             int x = 2 * leftMargin + i * t;
-            g2d.drawString(xStr, x + t / 2, height + 4 * gap);
+            g2d.drawString(xStr, x + t / 3, height + 4 * gap);
             g2d.drawLine(x, height, x, height + gap);
         }
 
@@ -69,10 +70,10 @@ public class ChartPanel extends JPanel {
         for (int i = 0; i < GlobalData.str.length; i++) {
             int x = 2 * leftMargin + i * t;
             int xx = x + t / 3;
-            int y = height - (block * GlobalData.d[i]) / allTime;
-            int w = t / 2;
+            int y = height - (block * (GlobalData.d[i] - 8)) / allTime - 2;
+            int w = t / 3;
             int h = (GlobalData.u[i] - GlobalData.d[i]) * block / allTime;
-            g2d.setPaint(new Color(0xFF0325));
+            g2d.setPaint(GlobalData.colors[i]);
             g2d.drawRect(xx, y, w, h);
             g2d.fillRect(xx, y, w, h);
         }
