@@ -9,7 +9,7 @@ public class DataFactory {
     private static ThreadLocal<Data> dataThreadLocal = new ThreadLocal<Data>() {
         @Override
         protected Data initialValue() {
-            return new Data();
+            return new Data(new Person("csw2", 1000L));
         }
 
         @Override
@@ -32,8 +32,46 @@ public class DataFactory {
         return dataThreadLocal.get();
     }
 
-    public static void clear() {
+    public static void setData(Data data) {
+        dataThreadLocal.set(data);
+    }
+
+    public static void clearData() {
         dataThreadLocal.remove();
+    }
+
+    private static ThreadLocal<String> stringThreadLocal = new ThreadLocal<String>() {
+        @Override
+        protected String initialValue() {
+            return "I am String.";
+        }
+
+        @Override
+        public String get() {
+            return super.get();
+        }
+
+        @Override
+        public void set(String value) {
+            super.set(value);
+        }
+
+        @Override
+        public void remove() {
+            super.remove();
+        }
+    };
+
+    public static String getStr() {
+        return stringThreadLocal.get();
+    }
+
+    public static void setStr(String str) {
+        stringThreadLocal.set(str);
+    }
+
+    public static void clearStr() {
+        stringThreadLocal.remove();
     }
 
 }
