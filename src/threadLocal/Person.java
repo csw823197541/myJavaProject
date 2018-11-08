@@ -22,4 +22,12 @@ public class Person {
     public Long getTime() {
         return time;
     }
+
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    public void setTime(Long time) {
+        this.time = time;
+    }
 }

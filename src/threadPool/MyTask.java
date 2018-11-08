@@ -8,18 +8,18 @@ public class MyTask implements Runnable {
 
     private int num;
 
-    public MyTask(int num) {
+    MyTask(int num) {
         this.num = num;
     }
 
     @Override
     public void run() {
-        System.out.println(Thread.currentThread().getName() + " task " + num + "正在执行。。。");
+        System.out.println(Thread.currentThread().getName() + ": 任务" + num + "正在执行。。。");
         try {
-            Thread.currentThread().sleep(2000);
+            Thread.sleep(1000);
         } catch (InterruptedException e) {
             e.printStackTrace();
         }
-        System.out.println("task " + num + "执行完毕！");
+        System.out.println("任务" + num + "执行完毕！");
     }
 }
