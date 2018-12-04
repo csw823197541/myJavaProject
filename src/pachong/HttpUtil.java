@@ -53,7 +53,7 @@ public class HttpUtil {
             if (tideList.size() > 0) {
                 for (long[] data : tideList.get(0).getData()) {
                     double tideH = CalculateUtil.div(data[1], 100.0);
-                    String sqlStr = "Insert into T_BASE_TIDE (GKEY,TIDE_TIME,TIDE_HEIGHT,PORT_GKEY) values ((select sys_guid() from dual),'to_date('" + sdf1.format(new Date(data[0])) + "','yyyy-mm-dd hh24:mi:ss')'," + tideH + ",'7C2E5685941108B2E055000000000001');";
+                    String sqlStr = "Insert into T_BASE_TIDE (GKEY,TIDE_TIME,TIDE_HEIGHT,PORT_GKEY) values ((select sys_guid() from dual),to_date('" + sdf1.format(new Date(data[0])) + "','yyyy-mm-dd hh24:mi:ss')," + tideH + ",'7C2E5685941108B2E055000000000001');";
                     System.out.println(sqlStr);
                 }
             }
