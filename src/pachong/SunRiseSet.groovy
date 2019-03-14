@@ -21,7 +21,13 @@ class SunRiseSet {
     static SimpleDateFormat sdf2 = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss")
 
     public static void main(String[] args) throws IOException {
-        String url = "https://richurimo.51240.com/119.01813973400877__jw__39.19987821952275__time__2019_12__richurimo/"
+        for (int i = 3; i <= 12; i++) {
+            String url = "https://richurimo.51240.com/119.01813973400877__jw__39.19987821952275__time__2019_" + i + "__richurimo/";
+            get(url)
+        }
+    }
+
+    static void get(String url) {
         Document document = Jsoup.connect(url).timeout(3000).get()
         //通过Document的select方法获取属性结点集合
         Element element = document.select("table").get(1)
@@ -44,7 +50,7 @@ class SunRiseSet {
 //            System.out.print(dawn + "\t")
 //            System.out.print(dusk + "\t")
 //            System.out.print("\n");
-            String sql = "Insert into T_BASE_DAYANDNIGHT (GKEY,DATE_TIME,SUNRISE,SUNSET,DAWN,DUSK) values ((select sys_guid() from dual),to_date('" + dateStr + " 00:00:00','yyyy-mm-dd hh24:mi:ss'),to_date('" + sunrise + "','yyyy-mm-dd hh24:mi:ss'),to_date('" + sunset + "','yyyy-mm-dd hh24:mi:ss'),to_date('" + dawn + "','yyyy-mm-dd hh24:mi:ss'),to_date('" + dusk + "','yyyy-mm-dd hh24:mi:ss')"
+            String sql = "Insert into T_BASE_DAYANDNIGHT (GKEY,DATE_TIME,SUNRISE,SUNSET,DAWN,DUSK) values ((select sys_guid() from dual),to_date('" + dateStr + " 00:00:00','yyyy-mm-dd hh24:mi:ss'),to_date('" + sunrise + "','yyyy-mm-dd hh24:mi:ss'),to_date('" + sunset + "','yyyy-mm-dd hh24:mi:ss'),to_date('" + dawn + "','yyyy-mm-dd hh24:mi:ss'),to_date('" + dusk + "','yyyy-mm-dd hh24:mi:ss'));"
             println(sql)
         }
     }
