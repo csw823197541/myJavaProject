@@ -36,7 +36,7 @@ public class HttpUtil {
     public static void main(String[] args) throws Exception {
 
         Calendar calendar = Calendar.getInstance();
-        calendar.setTime(sdf.parse("2019-3-7"));
+        calendar.setTime(sdf.parse("2019-3-29"));
 
         // 所有的潮汐时间点，每个小时对应的潮水高度
         Map<Long, Double> timeTideHeightMap = new LinkedHashMap<>();
@@ -74,7 +74,7 @@ public class HttpUtil {
                     System.out.println(sqlStr);
                 }
             } else {
-                if (timeTideHeightMap.get(timeList.get(i)).compareTo(timeTideHeightMap.get(timeList.get(i - 1))) >= 0) { // 说明上一个时间点是低潮
+                if (timeTideHeightMap.get(timeList.get(i)).compareTo(timeTideHeightMap.get(timeList.get(i - 1))) > 0) { // 说明上一个时间点是低潮
                     h = true;
                     // 将数据保存为sql语句的模式
                     String sqlStr = "Insert into T_BASE_TIDE (GKEY,TIDE_TIME,TIDE_HEIGHT,PORT_GKEY) values ((select sys_guid() from dual),to_date('" + sdf1.format(new Date(timeList.get(i - 1))) + "','yyyy-mm-dd hh24:mi:ss')," + timeTideHeightMap.get(timeList.get(i - 1)) + ",'7C2E5685941108B2E055000000000001');";
