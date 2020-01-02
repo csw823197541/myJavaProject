@@ -23,7 +23,7 @@ class GetTideDataFromOcean {
     public static void main(String[] args) throws IOException {
 
         Calendar calendar = Calendar.getInstance();
-        calendar.setTime(sdf1.parse("2019-3-30"));
+        calendar.setTime(sdf1.parse("2019-5-30"));
 
         for (int i = 1; i <= 20; i++) {
             calendar.add(Calendar.DATE, 1);

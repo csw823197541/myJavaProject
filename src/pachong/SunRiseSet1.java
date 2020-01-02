@@ -14,7 +14,7 @@ import java.io.IOException;
 public class SunRiseSet1 {
 
     public static void main(String[] args) throws IOException {
-        String url = "https://richurimo.51240.com/119.01813973400877__jw__39.19987821952275__time__2019_03__richurimo/";
+        String url = "https://richurimo.51240.com/119.01813973400877__jw__39.19987821952275__time__2020_01__richurimo/";
         Document document = Jsoup.connect(url).timeout(3000).get();
         //通过Document的select方法获取属性结点集合
         Element element = document.select("table").get(1);

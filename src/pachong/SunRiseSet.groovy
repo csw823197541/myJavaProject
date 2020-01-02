@@ -5,7 +5,6 @@ import org.jsoup.nodes.Document;
 import org.jsoup.nodes.Element;
 import org.jsoup.select.Elements
 
-import java.text.DateFormat
 import java.text.SimpleDateFormat
 import java.util.regex.Matcher
 import java.util.regex.Pattern;
@@ -21,13 +20,21 @@ class SunRiseSet {
     static SimpleDateFormat sdf2 = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss")
 
     public static void main(String[] args) throws IOException {
-        for (int i = 3; i <= 12; i++) {
-            String url = "https://richurimo.51240.com/119.01813973400877__jw__39.19987821952275__time__2019_" + i + "__richurimo/";
+        for (int i = 1; i <= 12; i++) {
+//            String url = "https://richurimo.51240.com/119.01813973400877__jw__39.19987821952275__time__2020_" + i + "__richurimo/";
+            String month = String.format("%02d", i);
+            String url = "https://richurimo.51240.com/119.01813973400877__jw__39.19987821952275__time__2020_" + month + "__richurimo/";
             get(url)
         }
     }
 
     static void get(String url) {
+
+        URL realUrl = new URL(url);
+        if("https".equalsIgnoreCase(realUrl.getProtocol())){
+            SslUtils.ignoreSsl();
+        }
+
         Document document = Jsoup.connect(url).timeout(3000).get()
         //通过Document的select方法获取属性结点集合
         Element element = document.select("table").get(1)

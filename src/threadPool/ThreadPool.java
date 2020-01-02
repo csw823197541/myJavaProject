@@ -15,16 +15,15 @@ public class ThreadPool {
 
         ThreadPoolExecutor executor = new ThreadPoolExecutor(4, 100, 1, TimeUnit.SECONDS, new LinkedBlockingDeque<Runnable>() {
         });
-//        ExecutorService executor = Executors.newSingleThreadExecutor();
 
+//        ExecutorService executor = Executors.newSingleThreadExecutor();
 //        ExecutorService executor = Executors.newFixedThreadPool(threadNum);
 //        ExecutorService executor = Executors.newCachedThreadPool();
+
         for (int i = 1; i <= 22; i++) {
             MyTask myTask = new MyTask(i);
             executor.execute(myTask);
-            System.out.println("线程池中线程数目：" + executor.getPoolSize() + "，" +
-                    "队列中等待执行的任务数目：" + executor.getQueue().size() + "，" +
-                    "已执行完的任务数目：" + executor.getCompletedTaskCount());
+            System.out.println("线程池中线程数目：" + executor.getPoolSize() + "，" + "队列中等待执行的任务数目：" + executor.getQueue().size() + "，" + "已执行完的任务数目：" + executor.getCompletedTaskCount());
         }
         executor.shutdown();
 
