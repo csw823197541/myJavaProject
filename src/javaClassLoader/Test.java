@@ -26,7 +26,7 @@ public class Test {
             } catch (ClassNotFoundException e) {
                 e.printStackTrace();
             }
-            /*ClassLoader loader = Test.class.getClassLoader();
+            /*ClassLoader loader = ModifyAndExport.class.getClassLoader();
             Class<?> cls;
             try
             {

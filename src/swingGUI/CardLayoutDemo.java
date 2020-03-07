@@ -20,7 +20,7 @@ public class CardLayoutDemo extends JFrame {
     private JPanel p_1 = null, p_2 = null, p_3 = null; // 要切换的三个JPanel
 
     public CardLayoutDemo() {
-        super("CardLayout Test");
+        super("CardLayout ModifyAndExport");
         try {
             // 将LookAndFeel设置成Windows样式
             UIManager.setLookAndFeel("com.sun.java.swing.plaf.windows.WindowsLookAndFeel");
